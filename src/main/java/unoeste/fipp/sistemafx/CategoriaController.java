@@ -34,9 +34,17 @@ public class CategoriaController implements Initializable {
 
     @FXML
     private TableView<Categoria> tabela;
+
+    private Categoria nCategoria;
+
     @FXML
     void onConfirmar(ActionEvent event) {
-
+        Categoria catg=new Categoria();
+        catg.setNome(NovaCategoria.getText());
+        // conecta no banco
+        CategoriaDAL catgD=new CategoriaDAL();
+        catgD.gravar(catg);
+        carregarTabela();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
