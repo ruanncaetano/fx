@@ -27,7 +27,18 @@ public class PedidoDAL implements IDAL<Pedido>{
             sql = sql.replace("#4", "" + entidade.getTotal());
             sql = sql.replace("#5", "" + entidade.getViagem());
             sql = sql.replace("#6", "" + entidade.getTipoPagamento().getId());
-            if (SingletonDB.getConexao().manipular(sql)) {
+            if(entidade.getViagem()==1){
+                EnderecoDAL enderecoDAL = new EnderecoDAL();
+                enderecoDAL.gravar(entidade.getEndereco());
+                sqlPedido = sqlPedido.replace("#8",""+ SingletonDB.getConexao().getMaxPK("endereco","end_id"));
+            }
+            else
+            {
+                sqlPedido = sqlPedido.replace("#8","null");
+            }
+
+            if (SingletonDB.getConexao().manipular(sql))
+            {
                 int id = SingletonDB.getConexao().getMaxPK("pedido", "ped_id");
                 for (Pedido.Item item : entidade.getItens()) {
                     String sql2 = """
