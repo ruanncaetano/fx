@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox prefHeight="348.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unoeste.fipp.sistemafx.CategoriaController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="429.0" text="Cadastro de Categoria">
@@ -21,10 +20,10 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </Label>
-      <TableView prefHeight="203.0" prefWidth="411.0">
+      <TableView fx:id="tabela" prefHeight="203.0" prefWidth="411.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="283.1999969482422" text="Nome" />
+          <TableColumn fx:id="catgID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="catgNome" prefWidth="283.1999969482422" text="Nome" />
         </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -42,13 +41,13 @@
                         <Insets />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="NovaCategoria" />
+                  <TextField fx:id="NovaCategoria" style="-fx-background-radius: 10;" />
                </children>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </VBox>
-            <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#onConfirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #88b257;" text="Confirmar" textFill="WHITE">
+            <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#onConfirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #88b257; -fx-background-radius: 10;" text="Confirmar" textFill="WHITE">
                <HBox.margin>
                   <Insets top="30.0" />
                </HBox.margin>

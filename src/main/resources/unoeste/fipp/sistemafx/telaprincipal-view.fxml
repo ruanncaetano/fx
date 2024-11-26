@@ -22,7 +22,7 @@
                 <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-radius: 10px; -fx-font-size: 14;" text="_CADASTRO">
                   <items>
                     <MenuItem onAction="#onCadProduto" style="-fx-background-radius: 10;" text="_PRODUTO..." />
-                        <MenuItem text="_CATEGORIA..." />
+                        <MenuItem onAction="#onCadCategoria" text="_CATEGORIA..." />
                         <MenuItem text="_TIPO DE PAGAMENTO" />
                         <MenuItem onAction="#onCadEmpresa" text="_EMPRESA" />
                         <SeparatorMenuItem mnemonicParsing="false" />

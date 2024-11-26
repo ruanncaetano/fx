@@ -9,6 +9,8 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class TelaprincipalController {
     public void onFechar(ActionEvent actionEvent) {
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
@@ -61,5 +63,14 @@ public class TelaprincipalController {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+    }
+     public void onCadCategoria(ActionEvent event) throws Exception {
+         FXMLLoader fxmlLoader = new FXMLLoader(SistemaFX.class.getResource("categoria-view.fxml"));
+         Scene scene = new Scene(fxmlLoader.load());
+         Stage stage=new Stage();
+         stage.setTitle("Pedido de produtos");
+         stage.setScene(scene);
+         stage.initModality(Modality.APPLICATION_MODAL);
+         stage.showAndWait();
     }
 }
