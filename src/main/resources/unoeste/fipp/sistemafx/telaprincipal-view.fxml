@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@../../../../../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unoeste.fipp.sistemafx.TelaprincipalController">
+   <top>
+      <VBox prefHeight="63.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="32.0" prefWidth="800.0" style="-fx-background-color: #141414;">
+              <menus>
+                <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-radius: 10px; -fx-font-size: 14;" text="_CADASTRO">
+                  <items>
+                    <MenuItem onAction="#onCadProduto" style="-fx-background-radius: 10;" text="_PRODUTO..." />
+                        <MenuItem text="_CATEGORIA..." />
+                        <MenuItem text="_TIPO DE PAGAMENTO" />
+                        <MenuItem onAction="#onCadEmpresa" text="_EMPRESA" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#onFechar" text="FECHAR">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-radius: 10px; -fx-font-size: 14;" text="_PEDIDO">
+                  <items>
+                    <MenuItem onAction="#onNovoPedido" text="_NOVO">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#onAbrirPedido" text="_ABRIR" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-radius: 10px; -fx-font-size: 14;" text="_RELATORIO">
+                  <items>
+                        <Menu text="_BÁSICO">
+                          <items>
+                            <MenuItem text="_CATEGORIA" />
+                              <MenuItem text="_PRODUTO" />
+                              <MenuItem text="_LISTA DE PREÇO" />
+                          </items>
+                        </Menu>
+                        <Menu text="_FINANCEIRO">
+                          <items>
+                            <MenuItem text="_PEDIDOS POR PERÍODO" />
+                          </items>
+                        </Menu>
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 10px;" text="_AJUDA">
+                     <items>
+                        <MenuItem text="_AJUDA DO SISTEMA" />
+                        <MenuItem text="_SOBRE" />
+                     </items>
+                  </Menu>
+              </menus>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <ImageView fitHeight="306.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../img/logo.png" />
+         </image>
+      </ImageView>
+   </center>
+   <bottom>
+    <Button fx:id="btAdicionar" mnemonicParsing="false" onAction="#btAdicionar" prefHeight="37.0" prefWidth="117.0" style="-fx-font-weight: bold; -fx-background-color: #141414; -fx-background-radius: 10;" text="Novo Pedido" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+   </bottom>
+</BorderPane>

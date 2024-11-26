@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="470.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unoeste.fipp.sistemafx.ProdutoFormController">
+   <center>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label text="ID" textFill="#200df2" />
+            <TextField fx:id="tfID" editable="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="10.0" layoutY="10.0" text="Nome" textFill="#200df2">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="tfNome" layoutX="10.0" layoutY="27.0" promptText="Informe o nome do produto">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="10.0" layoutY="57.0" text="Descrição" textFill="#200df2">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="taDesc" prefHeight="100.0" prefWidth="453.0" />
+            <Label layoutX="10.0" layoutY="104.0" text="Categoria" textFill="#200df2">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="cbCategoria" prefHeight="25.0" prefWidth="455.0" />
+            <Label layoutX="10.0" layoutY="151.0" text="Preço" textFill="#200df2">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="tfPreco" layoutX="10.0" layoutY="168.0" promptText="Informe o preço do produto">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="699.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#onConfirmar" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: royalblue;" text="Confirmar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="bfCancelar" mnemonicParsing="false" onAction="#onCancelar" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: salmon;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="206.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER_LEFT" prefHeight="587.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unoeste.fipp.sistemafx.EmpresaController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="607.0" text="Cadastro de Empresa" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <Label text="Razão Social">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="tfRazao" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="10.0" text="Nome Fantasia">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfFantasia" layoutX="10.0" layoutY="27.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox spacing="20.0">
+         <children>
+            <VBox prefHeight="47.0" prefWidth="290.0">
+               <children>
+                  <Label text="CNPJ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="tfCnpj" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="47.0" prefWidth="271.0">
+               <children>
+                  <Label text="IE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="tfIe" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <Label layoutX="10.0" layoutY="151.0" text="CEP">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfCep" layoutX="10.0" layoutY="168.0" onKeyReleased="#onCepDigitado" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="198.0" text="Endereço">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfEndereco" layoutX="10.0" layoutY="215.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="245.0" text="Bairro">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfBairro" layoutX="10.0" layoutY="262.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="292.0" text="Cidade">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfCidade" layoutX="10.0" layoutY="309.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="339.0" text="Estado">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfEstado" layoutX="10.0" layoutY="356.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="386.0" text="Email">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfEmail" layoutX="10.0" layoutY="403.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="433.0" text="Telefone">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfTelefone" layoutX="10.0" layoutY="450.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox alignment="CENTER" prefHeight="80.0" prefWidth="560.0" spacing="50.0">
+         <children>
+            <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#onConfirmar" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: royalblue; -fx-background-radius: 10;" text="Confirmar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="bfCancelar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCancelar" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: salmon; -fx-background-radius: 10;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
