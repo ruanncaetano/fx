@@ -1,67 +1,117 @@
 package unoeste.fipp.sistemafx;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import unoeste.fipp.sistemafx.db.dal.EmpresaDAL;
 import unoeste.fipp.sistemafx.db.entidade.Empresa;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class TabelaEmpresasControll implements Initializable {
 
-    @FXML
-    private Button btBuscar;
 
     @FXML
-    private Button btCadEmpre;
+    private TextField tfBairro;
 
     @FXML
-    private TableColumn<Empresa,String> tbCNPJ;
+    private TextField tfCep;
 
     @FXML
-    private TableColumn<Empresa, String> tbEmail;
+    private TextField tfCidade;
 
     @FXML
-    private TableColumn<Empresa,String> tbNomeFantasia;
+    private TextField tfCnpj;
 
     @FXML
-    private TableColumn<Empresa, String> tbTelefone;
+    private TextField tfEmail;
 
     @FXML
-    private TableView<Empresa> tbTotal;
+    private TextField tfNomeFantasia;
+
     @FXML
-    private TextField tfBuscarEmpre;
+    private TextField tfRazaoSocial;
+
+    @FXML
+    private TextField tfRua;
+
+    @FXML
+    private TextField tfTelefone;
+
+    @FXML
+    private TextField tfUf;
+
+    @FXML
+    private TextField tfVlrEmbalagem;
+
+    @FXML
+    private TextField tfNumeroDaRua;
+
+    @FXML
+    void onAlterar(ActionEvent event) {
+
+        EmpresaDAL empresaDAL = new EmpresaDAL();
+        Empresa empresa = null;
+
+        if (!empresaDAL.get("").isEmpty())
+            empresa = empresaDAL.get("").get(0);
+        boolean empresaJaExiste = (empresa == null) ? false : true;
+        if (empresa == null)
+            empresa = new Empresa("", "", "", "", "", "", "", "", "", "", "", 0.0);
+
+        empresa.setRazaoSocial(tfRazaoSocial.getText());
+        empresa.setBairro(tfBairro.getText());
+        empresa.setCep(tfCep.getText());
+        empresa.setCnpj(tfCnpj.getText());
+        empresa.setCidade(tfCidade.getText());
+        empresa.setEmail(tfEmail.getText());
+        empresa.setNomeFantasia(tfNomeFantasia.getText());
+        empresa.setNumeroDaRua(tfNumeroDaRua.getText());
+        empresa.setRua(tfRua.getText());
+        empresa.setTelefone(tfTelefone.getText());
+        empresa.setUf(tfUf.getText());
+        empresa.setValorDaEmbalagem(Double.parseDouble(tfVlrEmbalagem.getText()));
+
+        if (empresaJaExiste)
+            empresaDAL.alterar(empresa);
+        else
+            empresaDAL.gravar(empresa);
+
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configurar as colunas com os atributos da classe Categoria
-        tbNomeFantasia.setCellValueFactory(new PropertyValueFactory<>("Nome Fantasia"));
-        tbCNPJ.setCellValueFactory(new PropertyValueFactory<>("CNPJ"));
-        tbTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-        tbEmail.setCellValueFactory(new PropertyValueFactory<>("E-mail"));
+        EmpresaDAL empresaDAL = new EmpresaDAL();
+        Empresa empresa = null;
 
-        // Carregar os dados na tabela
-        carregarTabela("");
-    }
-    private void carregarTabela(String filtro)
-    {
-        EmpresaDAL empD=new EmpresaDAL();
-        List<Empresa> ListaEmp=empD.get(filtro);
+        if (!empresaDAL.get("").isEmpty())
+            empresa = empresaDAL.get("").get(0);
 
-        tbTotal.setItems(FXCollections.observableArrayList(ListaEmp));
-    }
+        if (empresa != null) {
 
-    public void onBuscar(javafx.event.ActionEvent actionEvent) {
-        carregarTabela(tfBuscarEmpre.getText());
+            //PREENCHER OS INPUTS
+            tfRazaoSocial.setText(empresa.getRazaoSocial());
+            tfBairro.setText(empresa.getBairro());
+            tfCep.setText(empresa.getCep());
+            tfCnpj.setText(empresa.getCnpj());
+            tfCidade.setText(empresa.getCidade());
+            tfEmail.setText(empresa.getEmail());
+            tfNomeFantasia.setText(empresa.getNomeFantasia());
+            tfNumeroDaRua.setText(empresa.getNumeroDaRua());
+            tfRua.setText(empresa.getRua());
+            tfTelefone.setText(empresa.getTelefone());
+            tfUf.setText(empresa.getUf());
+            tfVlrEmbalagem.setText(String.valueOf(empresa.getValorDaEmbalagem()));
+
+
+
+        } else {
+            tfVlrEmbalagem.setText("0");
+        }
     }
 }
 

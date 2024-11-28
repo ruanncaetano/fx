@@ -114,8 +114,7 @@ public class EmpresaController implements Initializable {
         alert.setContentText(mensagem);
         if(alert.showAndWait().get()== ButtonType.OK)
         {
-            Empresa emp=new Empresa(tfRazao.getText(),tfFantasia.getText(),tfCnpj.getText(),
-                    endereco,tfTelefone.getText(),tfEmail.getText());
+            Empresa emp=new Empresa(tfRazao.getText(),tfFantasia.getText(),tfCnpj.getText(),endereco,tfTelefone.getText(),tfEmail.getText());
             EmpresaDAL empD=new EmpresaDAL();
             empD.gravar(emp);
         }

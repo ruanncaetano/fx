@@ -2,100 +2,167 @@ package unoeste.fipp.sistemafx.db.entidade;
 
 import unoeste.fipp.sistemafx.db.viacep.Endereco;
 
-public class Empresa {
-    private int emp_id;
-    private String emp_razao;
-    private String emp_fantasia;
-    private String emp_cnpj;
-    public Endereco endereco;
-    private String emp_fone;
-    private String emp_email;
-    private Double emp_vlremb;
+public class Empresa
+{
+    private int id;
+    private String razaoSocial;
+    private String nomeFantasia;
+    private String cnpj;
+    private String cep;
+    private String rua;
+    private String numeroDaRua;
+    private String bairro;
+    private String cidade;
+    private String uf;
+    private String telefone;
+    private String email;
+    private double valorDaEmbalagem;
 
-    public Empresa()
+    public Empresa(int id, String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, double valorDaEmbalagem)
     {
-
-    }
-    public Empresa(String emp_razao, String emp_fantasia, String emp_cnpj, Endereco endereco, String emp_fone, String emp_email) {
-        this.emp_razao = emp_razao;
-        this.emp_fantasia = emp_fantasia;
-        this.emp_cnpj = emp_cnpj;
-        this.endereco = endereco;
-        this.emp_fone = emp_fone;
-        this.emp_email = emp_email;
-    }
-
-    public Empresa(int emp_id, String emp_razao, String emp_fantasia, String emp_cnpj, String emp_fone, String emp_email, Double emp_vlremb) {
-        this.emp_id = emp_id;
-        this.emp_razao = emp_razao;
-        this.emp_fantasia = emp_fantasia;
-        this.emp_cnpj = emp_cnpj;
-        this.emp_fone = emp_fone;
-        this.emp_email = emp_email;
-        this.emp_vlremb = emp_vlremb;
+        this.id = id;
+        this.razaoSocial = razaoSocial;
+        this.nomeFantasia = nomeFantasia;
+        this.cnpj = cnpj;
+        this.cep = cep;
+        this.rua = rua;
+        this.numeroDaRua = numeroDaRua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.telefone = telefone;
+        this.email = email;
+        this.valorDaEmbalagem = valorDaEmbalagem;
     }
 
-    public int getEmp_id() {
-        return emp_id;
+    public Empresa(String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, double valorDaEmbalagem) {
+        this(0, razaoSocial, nomeFantasia, cnpj, cep, rua, numeroDaRua, bairro, cidade, uf, telefone, email, valorDaEmbalagem);
     }
 
-    public void setEmp_id(int emp_id) {
-        this.emp_id = emp_id;
+    public Empresa(String text, String tfFantasiaText, String tfCnpjText, Endereco endereco, String tfTelefoneText, String tfEmailText) {
+        this(0, "", "", "", "", "", "", "", "", "", "", "", 0);
     }
 
-    public String getEmp_razao() {
-        return emp_razao;
+    public int getId() {
+        return id;
     }
 
-    public void setEmp_razao(String emp_razao) {
-        this.emp_razao = emp_razao;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEmp_fantasia() {
-        return emp_fantasia;
+    public String getRazaoSocial() {
+        return razaoSocial;
     }
 
-    public void setEmp_fantasia(String emp_fantasia) {
-        this.emp_fantasia = emp_fantasia;
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
     }
 
-    public String getEmp_cnpj() {
-        return emp_cnpj;
+    public String getNomeFantasia() {
+        return nomeFantasia;
     }
 
-    public void setEmp_cnpj(String emp_cnpj) {
-        this.emp_cnpj = emp_cnpj;
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public String getEmp_fone() {
-        return emp_fone;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
-    public void setEmp_fone(String emp_fone) {
-        this.emp_fone = emp_fone;
+    public String getCep() {
+        return cep;
     }
 
-    public String getEmp_email() {
-        return emp_email;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public void setEmp_email(String emp_email) {
-        this.emp_email = emp_email;
+    public String getRua() {
+        return rua;
     }
 
-    public Double getEmp_vlremb() {
-        return emp_vlremb;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
-    public void setEmp_vlremb(Double emp_vlremb) {
-        this.emp_vlremb = emp_vlremb;
+    public String getNumeroDaRua() {
+        return numeroDaRua;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco= endereco;
+    public void setNumeroDaRua(String numeroDaRua) {
+        this.numeroDaRua = numeroDaRua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public double getValorDaEmbalagem() {
+        return valorDaEmbalagem;
+    }
+
+    public void setValorDaEmbalagem(double valorDaEmbalagem) {
+        this.valorDaEmbalagem = valorDaEmbalagem;
+    }
+
+    public String toString()
+    {
+        return "[" +
+                "emp_id=" + id + ", " +
+                "emp_razao='" + razaoSocial + "', " +
+                "emp_fantasia='" + nomeFantasia + "', " +
+                "emp_cnpj='" + cnpj + "', " +
+                "emp_cep='" + cep + "', " +
+                "emp_rua='" + rua + "', " +
+                "emp_numero='" + numeroDaRua + "', " +
+                "emp_bairro='" + bairro + "', " +
+                "emp_cidade='" + cidade + "', " +
+                "emp_uf='" + uf + "', " +
+                "emp_fone='" + telefone + "', " +
+                "emp_email='" + email + "', " +
+                "emp_vlremb=" + valorDaEmbalagem +
+                "]";
     }
 }
