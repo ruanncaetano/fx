@@ -45,18 +45,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-radius: 10px; -fx-font-size: 14;" text="_RELATORIO">
                   <items>
-                        <Menu text="_BÁSICO">
-                          <items>
-                            <MenuItem text="_CATEGORIA" />
-                              <MenuItem text="_PRODUTO" />
-                              <MenuItem text="_LISTA DE PREÇO" />
-                          </items>
-                        </Menu>
                         <Menu text="_FINANCEIRO">
                           <items>
                             <MenuItem text="_PEDIDOS POR PERÍODO" />
                           </items>
                         </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#onTabelaEmpresas" text="EMPRESAS" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 10px;" text="_AJUDA">

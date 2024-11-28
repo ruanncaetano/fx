@@ -1,7 +1,5 @@
-package unoeste.fipp.sistemafx.db.dal;
+package unoeste.fipp.sistemafx.db.viacep;
 
-import com.faiskaburguer.db.viacep.ConsultaCEP;
-import com.faiskaburguer.db.viacep.EnderecoRecordAPI;
 
 public class Endereco {
     private int id;

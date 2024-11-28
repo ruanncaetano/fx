@@ -1,13 +1,14 @@
 package unoeste.fipp.sistemafx.db.dal;
 
-import com.faiskaburguer.db.entidade.Empresa;
-import com.faiskaburguer.db.entidade.Endereco;
-import com.faiskaburguer.db.util.SingletonDB;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import unoeste.fipp.sistemafx.db.viacep.Endereco;
+import unoeste.fipp.sistemafx.db.util.SingletonDB;
 
 public class EnderecoDAL implements IDAL <Endereco>{
     @Override
@@ -50,7 +51,7 @@ public class EnderecoDAL implements IDAL <Endereco>{
     }
 
     @Override
-    public Endereco get(int id) throws SQLException {
+    public Endereco get(int id) throws IOException {
         Endereco endereco = null;
         String sql="SELECT * FROM endereco WHERE end_id="+id;
         ResultSet resultSet = SingletonDB.getConexao().consultar(sql);
