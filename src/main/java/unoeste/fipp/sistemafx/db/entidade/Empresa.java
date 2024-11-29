@@ -16,9 +16,9 @@ public class Empresa
     private String uf;
     private String telefone;
     private String email;
-    private double valorDaEmbalagem;
+    private String valorDaEmbalagem;
 
-    public Empresa(int id, String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, double valorDaEmbalagem)
+    public Empresa(int id, String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, String valorDaEmbalagem)
     {
         this.id = id;
         this.razaoSocial = razaoSocial;
@@ -35,12 +35,12 @@ public class Empresa
         this.valorDaEmbalagem = valorDaEmbalagem;
     }
 
-    public Empresa(String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, double valorDaEmbalagem) {
+    public Empresa(String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, String valorDaEmbalagem) {
         this(0, razaoSocial, nomeFantasia, cnpj, cep, rua, numeroDaRua, bairro, cidade, uf, telefone, email, valorDaEmbalagem);
     }
 
     public Empresa(String text, String tfFantasiaText, String tfCnpjText, Endereco endereco, String tfTelefoneText, String tfEmailText) {
-        this(0, "", "", "", "", "", "", "", "", "", "", "", 0);
+        this(0, "", "", "", "", "", "", "", "", "", "", "", "");
     }
 
     public int getId() {
@@ -139,11 +139,11 @@ public class Empresa
         this.email = email;
     }
 
-    public double getValorDaEmbalagem() {
+    public String getValorDaEmbalagem() {
         return valorDaEmbalagem;
     }
 
-    public void setValorDaEmbalagem(double valorDaEmbalagem) {
+    public void setValorDaEmbalagem(String valorDaEmbalagem) {
         this.valorDaEmbalagem = valorDaEmbalagem;
     }
 

@@ -80,7 +80,7 @@ public class EmpresaDAL implements IDAL<Empresa> {
     @Override
     public Empresa get(int id) {
         Empresa empresa = null;
-        String sql = "SELECT * FROM empresa WHERE emp_id = " + id;
+        String sql = "SELECT * FROM empresa WHERE emp_fantasia = " + id;
         ResultSet resultSet = SingletonDB.getConexao().consultar(sql);
 
         try {
@@ -96,7 +96,7 @@ public class EmpresaDAL implements IDAL<Empresa> {
                         resultSet.getString("emp_uf"),
                         resultSet.getString("emp_fone"),
                         resultSet.getString("emp_email"),
-                        resultSet.getDouble("emp_vlremb"));
+                        resultSet.getString("emp_vlremb"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,7 +128,7 @@ public class EmpresaDAL implements IDAL<Empresa> {
                         resultSet.getString("emp_uf"),
                         resultSet.getString("emp_fone"),
                         resultSet.getString("emp_email"),
-                        resultSet.getDouble("emp_vlremb"));
+                        resultSet.getString("emp_vlremb"));
                 listaDeEmpresas.add(empresa);
             }
         } catch (Exception e) {

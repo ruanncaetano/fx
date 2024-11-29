@@ -35,7 +35,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfFantasia" layoutX="10.0" layoutY="27.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfFantasia" layoutX="10.0" layoutY="27.0" promptText="Informe o nome Fantasia" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
@@ -48,7 +48,7 @@
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="tfCnpj" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+                  <TextField fx:id="tfCnpj" promptText="00.000.000/00000-00" style="-fx-background-radius: 10;">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -61,7 +61,7 @@
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Label>
-                  <TextField fx:id="tfIe" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+                  <TextField fx:id="tfIe" promptText="000.000.000-00" style="-fx-background-radius: 10;">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -81,7 +81,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCep" layoutX="10.0" layoutY="168.0" onKeyReleased="#onCepDigitado" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfCep" layoutX="10.0" layoutY="168.0" onKeyReleased="#onCepDigitado" promptText="00000-000" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
@@ -94,7 +94,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfEndereco" layoutX="10.0" layoutY="215.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfEndereco" layoutX="10.0" layoutY="215.0" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
@@ -107,7 +107,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfBairro" layoutX="10.0" layoutY="262.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfBairro" layoutX="10.0" layoutY="262.0" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
@@ -120,7 +120,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCidade" layoutX="10.0" layoutY="309.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfCidade" layoutX="10.0" layoutY="309.0" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
@@ -133,7 +133,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfEstado" layoutX="10.0" layoutY="356.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfEstado" layoutX="10.0" layoutY="356.0" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
@@ -146,12 +146,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfEmail" layoutX="10.0" layoutY="403.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfEmail" layoutX="10.0" layoutY="403.0" promptText="exemplo@extenção.com" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="10.0" layoutY="433.0" text="Telefone">
+      <Label layoutX="10.0" layoutY="433.0" text="Valor de embalagem">
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
@@ -159,7 +159,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="tfTelefone" layoutX="10.0" layoutY="450.0" promptText="Informe a razão social da empresa" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfVlrEmbala" layoutX="10.0" layoutY="450.0" promptText="00,00" style="-fx-background-radius: 10;">
          <font>
             <Font size="14.0" />
          </font>
