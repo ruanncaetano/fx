@@ -2,7 +2,6 @@ package unoeste.fipp.sistemafx.db.dal;
 
 import unoeste.fipp.sistemafx.db.entidade.Empresa;
 import unoeste.fipp.sistemafx.db.util.SingletonDB;
-import unoeste.fipp.sistemafx.db.viacep.Endereco;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -80,7 +79,7 @@ public class EmpresaDAL implements IDAL<Empresa> {
     @Override
     public Empresa get(int id) {
         Empresa empresa = null;
-        String sql = "SELECT * FROM empresa WHERE emp_fantasia = " + id;
+        String sql = "SELECT * FROM empresa WHERE emp_id = " + id;
         ResultSet resultSet = SingletonDB.getConexao().consultar(sql);
 
         try {
@@ -96,7 +95,7 @@ public class EmpresaDAL implements IDAL<Empresa> {
                         resultSet.getString("emp_uf"),
                         resultSet.getString("emp_fone"),
                         resultSet.getString("emp_email"),
-                        resultSet.getString("emp_vlremb"));
+                        resultSet.getDouble("emp_vlremb"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,7 +127,7 @@ public class EmpresaDAL implements IDAL<Empresa> {
                         resultSet.getString("emp_uf"),
                         resultSet.getString("emp_fone"),
                         resultSet.getString("emp_email"),
-                        resultSet.getString("emp_vlremb"));
+                        resultSet.getDouble("emp_vlremb"));
                 listaDeEmpresas.add(empresa);
             }
         } catch (Exception e) {

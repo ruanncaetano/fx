@@ -1,6 +1,5 @@
 package unoeste.fipp.sistemafx.db.entidade;
 
-import unoeste.fipp.sistemafx.db.viacep.Endereco;
 
 public class Empresa
 {
@@ -16,9 +15,9 @@ public class Empresa
     private String uf;
     private String telefone;
     private String email;
-    private String valorDaEmbalagem;
+    private double valorDaEmbalagem;
 
-    public Empresa(int id, String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, String valorDaEmbalagem)
+    public Empresa(int id, String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, double valorDaEmbalagem)
     {
         this.id = id;
         this.razaoSocial = razaoSocial;
@@ -35,115 +34,143 @@ public class Empresa
         this.valorDaEmbalagem = valorDaEmbalagem;
     }
 
-    public Empresa(String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, String valorDaEmbalagem) {
+    public Empresa(String razaoSocial, String nomeFantasia, String cnpj, String cep, String rua, String numeroDaRua, String bairro, String cidade, String uf, String telefone, String email, double valorDaEmbalagem)
+    {
         this(0, razaoSocial, nomeFantasia, cnpj, cep, rua, numeroDaRua, bairro, cidade, uf, telefone, email, valorDaEmbalagem);
     }
 
-    public Empresa(String text, String tfFantasiaText, String tfCnpjText, Endereco endereco, String tfTelefoneText, String tfEmailText) {
-        this(0, "", "", "", "", "", "", "", "", "", "", "", "");
+    public Empresa()
+    {
+        this(0, "", "", "", "", "", "", "", "", "", "", "", 0);
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getRazaoSocial() {
+    public String getRazaoSocial()
+    {
         return razaoSocial;
     }
 
-    public void setRazaoSocial(String razaoSocial) {
+    public void setRazaoSocial(String razaoSocial)
+    {
         this.razaoSocial = razaoSocial;
     }
 
-    public String getNomeFantasia() {
+    public String getNomeFantasia()
+    {
         return nomeFantasia;
     }
 
-    public void setNomeFantasia(String nomeFantasia) {
+    public void setNomeFantasia(String nomeFantasia)
+    {
         this.nomeFantasia = nomeFantasia;
     }
 
-    public String getCnpj() {
+    public String getCnpj()
+    {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public void setCnpj(String cnpj)
+    {
         this.cnpj = cnpj;
     }
 
-    public String getCep() {
+    public String getCep()
+    {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(String cep)
+    {
         this.cep = cep;
     }
 
-    public String getRua() {
+    public String getRua()
+    {
         return rua;
     }
 
-    public void setRua(String rua) {
+    public void setRua(String rua)
+    {
         this.rua = rua;
     }
 
-    public String getNumeroDaRua() {
+    public String getNumeroDaRua()
+    {
         return numeroDaRua;
     }
 
-    public void setNumeroDaRua(String numeroDaRua) {
+    public void setNumeroDaRua(String numeroDaRua)
+    {
         this.numeroDaRua = numeroDaRua;
     }
 
-    public String getBairro() {
+    public String getBairro()
+    {
         return bairro;
     }
 
-    public void setBairro(String bairro) {
+    public void setBairro(String bairro)
+    {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
+    public String getCidade()
+    {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(String cidade)
+    {
         this.cidade = cidade;
     }
 
-    public String getUf() {
+    public String getUf()
+    {
         return uf;
     }
 
-    public void setUf(String uf) {
+    public void setUf(String uf)
+    {
         this.uf = uf;
     }
 
-    public String getTelefone() {
+    public String getTelefone()
+    {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(String telefone)
+    {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getValorDaEmbalagem() {
+    public double getValorDaEmbalagem()
+    {
         return valorDaEmbalagem;
     }
 
-    public void setValorDaEmbalagem(String valorDaEmbalagem) {
+    public void setValorDaEmbalagem(double valorDaEmbalagem)
+    {
         this.valorDaEmbalagem = valorDaEmbalagem;
     }
 

@@ -15,7 +15,6 @@ module unoeste.fipp.sistemafx {
     exports unoeste.fipp.sistemafx.db.entidade;
     exports unoeste.fipp.sistemafx.db.dal;
     opens unoeste.fipp.sistemafx.db.dal to javafx.fxml;
-    exports unoeste.fipp.sistemafx.db.viacep;
     opens unoeste.fipp.sistemafx.db.viacep to javafx.fxml;
 
 }

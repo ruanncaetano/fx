@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import org.json.JSONObject;
 import unoeste.fipp.sistemafx.db.dal.EmpresaDAL;
 import unoeste.fipp.sistemafx.db.entidade.Empresa;
-import unoeste.fipp.sistemafx.db.viacep.Endereco;
 import unoeste.fipp.sistemafx.util.MaskFieldUtil;
 
 import java.io.BufferedReader;
@@ -64,9 +63,16 @@ public class EmpresaController implements Initializable {
     private TextField tfTelefone;
 
     @FXML
-    private double tfVlrEmbala;
+    private TextField tfVlrEmbala;
 
-    private Endereco endereco;
+    @FXML
+    private TextField tfNumeroDaRua;
+
+    @FXML
+    private TextField tfRua;
+
+    @FXML
+    private TextField tfUf;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,37 +80,40 @@ public class EmpresaController implements Initializable {
         MaskFieldUtil.cepField(tfCep);
         MaskFieldUtil.foneField(tfTelefone);
     }
-    private void buscaCep()
+
+    @FXML
+    void onAlterar(ActionEvent event)
     {
-        String cep=tfCep.getText();
-        StringBuffer dados = new StringBuffer();
-        try {
-            URL url = new URL("https://viacep.com.br/ws/"+ cep + "/json");
-            URLConnection con = url.openConnection();
-            con.setDoInput(true);
-            con.setDoOutput(true);
-            con.setAllowUserInteraction(false);
-            InputStream in = con.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            String s = "";
-            while (null != (s = br.readLine()))
-                dados.append(s);
-            br.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        JSONObject my_obj = new JSONObject(dados.toString());
-        tfCidade.setText(my_obj.getString("localidade"));
-        tfBairro.setText(my_obj.getString("bairro"));
-        tfEndereco.setText(my_obj.getString("logradouro"));
-        tfEstado.setText(my_obj.getString("estado"));
+        EmpresaDAL empresaDAL = new EmpresaDAL();
+        Empresa empresa = null;
 
-        endereco.setCep(my_obj.getString("localidade"));
-        endereco.setBairro(my_obj.getString("bairro"));
-        endereco.setRua(my_obj.getString("logradouro"));
-        endereco.setUf(my_obj.getString("estado"));
+        if (!empresaDAL.get("").isEmpty())
+            empresa = empresaDAL.get("").get(0);
+        boolean empresaJaExiste = (empresa == null) ? false : true;
+        if (empresa == null)
+            empresa = new Empresa();
+
+        empresa.setRazaoSocial(tfRazao.getText());
+        empresa.setBairro(tfBairro.getText());
+        empresa.setCep(tfCep.getText());
+        empresa.setCnpj(tfCnpj.getText());
+        empresa.setCidade(tfCidade.getText());
+        empresa.setEmail(tfEmail.getText());
+        empresa.setNomeFantasia(tfFantasia.getText());
+        empresa.setNumeroDaRua(tfNumeroDaRua.getText());
+        empresa.setRua(tfRua.getText());
+        empresa.setTelefone(tfTelefone.getText());
+        empresa.setUf(tfUf.getText());
+        empresa.setValorDaEmbalagem(Double.parseDouble(tfVlrEmbala.getText()));
+
+        if (empresaJaExiste)
+            empresaDAL.alterar(empresa);
+        else
+            empresaDAL.gravar(empresa);
+
+        tfRua.getScene().getWindow().hide();
+
     }
-
     @FXML
     void onCancelar(ActionEvent event) {
         bfCancelar.getScene().getWindow().hide();
@@ -118,19 +127,10 @@ public class EmpresaController implements Initializable {
         if(alert.showAndWait().get()== ButtonType.OK)
         {
 
-            Empresa emp=new Empresa(tfRazao.getText(),tfFantasia.getText(),tfCnpj.getText(),
-                    endereco,tfTelefone.getText(),tfEmail.getText());
+            Empresa emp=new Empresa(tfRazao.getText(),tfFantasia.getText(),tfCnpj.getText(),tfCep.getText(),tfRua.getText(),tfNumeroDaRua.getText(),tfBairro.getText(),tfCidade.getText(),tfUf.getText(),tfTelefone.getText(),tfEmail.getText(),Double.parseDouble(tfVlrEmbala.getText()));
             EmpresaDAL empD=new EmpresaDAL();
             empD.gravar(emp);
         }
 
-    }
-
-
-    public void onCepDigitado(KeyEvent keyEvent) {
-        if(tfCep.getText().length()==9)
-        {
-            buscaCep();
-        }
     }
 }
