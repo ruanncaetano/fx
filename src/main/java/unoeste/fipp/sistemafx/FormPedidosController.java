@@ -147,35 +147,80 @@ public class FormPedidosController implements Initializable {
         List<TipoPagamento> tipoPagamentoList=new TipoPagamentoDAL().get("");
         cbTipoPagamento.setItems(FXCollections.observableArrayList(tipoPagamentoList));
     }
-
+    @FXML
     public void onPrint(ActionEvent actionEvent) {
-        //gerar pdf e abrir para impressão
-        try{
-            Document document=new Document(PageSize.A4);
-            PdfWriter.getInstance(document,new FileOutputStream("d:/pedido.pdf"));
+        try {
+            // criando o doc
+            Document document = new Document(PageSize.A4);
+            PdfWriter.getInstance(document, new FileOutputStream("pedido.pdf"));
             document.open();
-            Font grande=new Font(Font.HELVETICA,48);
-            grande.setColor(Color.RED);
-            Paragraph paragraph=new Paragraph("Faiska Burguer");
-            paragraph.setFont(grande);
-            document.add(paragraph);
-            float [] pointColumnWidths = {150F, 150F, 150F};
-            Table table = new Table(10,10);//pointColumnWidths);
 
-            // Adding cells to the table
-            table.addCell(String.valueOf(new Cell().add("Name")));
-            table.addCell(String.valueOf(new Cell().add("Raju")));
-            table.addCell(String.valueOf(new Cell().add("Id")));
-            table.addCell(String.valueOf(new Cell().add("1001")));
-            table.addCell(String.valueOf(new Cell().add("Designation")));
-            table.addCell(String.valueOf(new Cell().add("Programmer")));
+            // config de fontas
+            Font grande = new Font(Font.HELVETICA, 48, Font.BOLD, Color.RED);
+            Font normal = new Font(Font.HELVETICA, 12);
 
+            // titulo
+            Paragraph titulo = new Paragraph("Faiska Burguer\n\n", grande);
+            titulo.setAlignment(Element.ALIGN_CENTER);
+            document.add(titulo);
+
+            // infos do pedido
+            Paragraph infoPedido = new Paragraph(
+                    "Cliente: " + tfCliente.getText() + "\n" +
+                            "Telefone: " + tfTelefone.getText() + "\n" +
+                            "Data: " + dpData.getValue().toString() + "\n" +
+                            "Tipo de Pagamento: " + (cbTipoPagamento.getValue() != null ? cbTipoPagamento.getValue().getNome() : "N/A") + "\n" +
+                            "Viagem: " + (rbViagem.isSelected() ? "Sim" : "Não") + "\n" +
+                            "Total: R$ " + lbTotal.getText() + "\n\n",
+                    normal
+            );
+            document.add(infoPedido);
+
+            // tabela de itens
+            Table table = new Table(3);
+            table.setWidths(new float[]{50f, 20f, 30f});
+            table.setWidth(100);
+
+            // cabecalho
+            Cell cell;
+            cell = new Cell(new Phrase("Produto", normal));
+            cell.setHeader(true);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new Cell(new Phrase("Quantidade", normal));
+            cell.setHeader(true);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new Cell(new Phrase("Valor", normal));
+            cell.setHeader(true);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            table.endHeaders();
+
+            // adicionando os itens a tabela
+            for (Pedido.Item item : tableView.getItems()) {
+                table.addCell(new Cell(new Phrase(item.produto().getNome(), normal)));
+                table.addCell(new Cell(new Phrase(String.valueOf(item.quant()), normal)));
+                table.addCell(new Cell(new Phrase(String.format("R$ %.2f", item.valor() * item.quant()), normal)));
+            }
+
+            document.add(table);
+
+            // fecha o documento
             document.close();
-            Desktop.getDesktop().open(new File("d:/pedido.pdf"));
-        }catch (Exception e){
-            System.out.println(e);
-        }
 
+            // abre o pdf
+            Desktop.getDesktop().open(new File("pedido.pdf"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
+
 }
+
 
