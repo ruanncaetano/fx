@@ -2,12 +2,16 @@ package unoeste.fipp.sistemafx;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import unoeste.fipp.sistemafx.db.dal.EmpresaDAL;
 import unoeste.fipp.sistemafx.db.entidade.Empresa;
 
@@ -64,5 +68,18 @@ public class TabelaEmpresasControll implements Initializable {
     @FXML
     public void onBuscar(ActionEvent actionEvent) {
         carregarTabela(tfBuscarEmpre.getText());
+    }
+    @FXML
+    void onCad(ActionEvent actionEvent) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(SistemaFX.class.getResource("empresa-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage=new Stage();
+        stage.setTitle("Informações das empresas");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+//        stage.setY(stage.getY()+25);
+//        stage.setX(stage.getX());
+
+        stage.showAndWait();
     }
 }

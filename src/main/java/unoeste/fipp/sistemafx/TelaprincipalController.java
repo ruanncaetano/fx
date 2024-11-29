@@ -54,7 +54,14 @@ public class TelaprincipalController {
         stage.showAndWait();
     }
 
-    public void onAbrirPedido(ActionEvent actionEvent) {
+    public void onAbrirPedido(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SistemaFX.class.getResource("tabela-pedido.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage=new Stage();
+        stage.setTitle("Pedido de produtos");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 
     public void btAdicionar(ActionEvent actionEvent) throws Exception{

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox prefHeight="636.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unoeste.fipp.sistemafx.TabelaPedidos">
+   <children>
+      <HBox prefHeight="57.0" prefWidth="742.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="622.0" text="Pedidos">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="22.0" />
+               </HBox.margin>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/miniLogo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <TableView fx:id="tbPedidos" prefHeight="446.0" prefWidth="722.0">
+        <columns>
+          <TableColumn fx:id="tbId" prefWidth="28.80001962184906" text="ID" />
+          <TableColumn fx:id="tbData" prefWidth="67.19997596740723" text="Data" />
+            <TableColumn fx:id="tbCli" prefWidth="200.00000762939453" text="Cliente" />
+            <TableColumn fx:id="tbFone" prefWidth="136.8000030517578" text="Telefone" />
+            <TableColumn fx:id="tbTotal" prefWidth="122.39999389648438" text="Total" />
+            <TableColumn fx:id="tbPagamento" prefWidth="102.4000244140625" text="Pagamento" />
+            <TableColumn fx:id="tbViage" prefWidth="66.4000244140625" text="Viagem" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>

@@ -111,6 +111,8 @@ public class FormPedidosController implements Initializable {
         }
         PedidoDAL pedidoDAL=new PedidoDAL();
         pedidoDAL.gravar(pedido);
+        System.out.println(pedido.getItens());
+
         //fecha a janela de pedidos
         btProduto.getScene().getWindow().hide();
     }
