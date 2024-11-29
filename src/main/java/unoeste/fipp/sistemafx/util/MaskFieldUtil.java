@@ -100,31 +100,31 @@ public abstract class MaskFieldUtil {
     public static void monetaryField(final TextField textField) {
         textField.setAlignment(Pos.CENTER_RIGHT);
         textField.lengthProperty().addListener((observable, oldValue, newValue) -> {
-            String value = textField.getText();
-            value = value.replaceAll("[^0-9]", "");
-            value = value.replaceAll("([0-9]{1})([0-9]{14})$", "$1.$2");
-            value = value.replaceAll("([0-9]{1})([0-9]{11})$", "$1.$2");
-            value = value.replaceAll("([0-9]{1})([0-9]{8})$", "$1.$2");
-            value = value.replaceAll("([0-9]{1})([0-9]{5})$", "$1.$2");
-            value = value.replaceAll("([0-9]{1})([0-9]{2})$", "$1,$2");
-            textField.setText(value);
-            MaskFieldUtil.positionCaret(textField);
-            textField.textProperty().addListener((ChangeListener) new ChangeListener<String>() {
+                    String value = textField.getText();
+                    value = value.replaceAll("[^0-9]", "");
+                    value = value.replaceAll("([0-9]{1})([0-9]{14})$", "$1.$2");
+                    value = value.replaceAll("([0-9]{1})([0-9]{11})$", "$1.$2");
+                    value = value.replaceAll("([0-9]{1})([0-9]{8})$", "$1.$2");
+                    value = value.replaceAll("([0-9]{1})([0-9]{5})$", "$1.$2");
+                    value = value.replaceAll("([0-9]{1})([0-9]{2})$", "$1,$2");
+                    textField.setText(value);
+                    MaskFieldUtil.positionCaret(textField);
+                    textField.textProperty().addListener((ChangeListener) new ChangeListener<String>() {
 
-                public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-                    if (newValue.length() > 17) {
-                        textField.setText(oldValue);
-                    }
+                        public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+                            if (newValue.length() > 17) {
+                                textField.setText(oldValue);
+                            }
+                        }
+                    });
                 }
-            });
-        }
         );
         textField.focusedProperty().addListener((observableValue, aBoolean, fieldChange) -> {
-            int length;
-            if (!(fieldChange || (length = textField.getText().length()) <= 0 || length >= 3)) {
-                textField.setText(textField.getText() + "00");
-            }
-        }
+                    int length;
+                    if (!(fieldChange || (length = textField.getText().length()) <= 0 || length >= 3)) {
+                        textField.setText(textField.getText() + "00");
+                    }
+                }
         );
     }
 
@@ -146,128 +146,128 @@ public abstract class MaskFieldUtil {
     public static void cpfCnpjField(TextField textField) {
         MaskFieldUtil.maxField(textField, 18);
         textField.lengthProperty().addListener((observableValue, number, number2) -> {
-            String value = textField.getText();
-            if (number2.intValue() <= 14) {
-                value = value.replaceAll("[^0-9]", "");
-                value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
-                value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
-                value = value.replaceFirst("(\\d{3})(\\d)", "$1-$2");
-            } else {
-                value = value.replaceAll("[^0-9]", "");
-                value = value.replaceFirst("(\\d{2})(\\d)", "$1.$2");
-                value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
-                value = value.replaceFirst("(\\d{3})(\\d)", "$1/$2");
-                value = value.replaceFirst("(\\d{4})(\\d)", "$1-$2");
-            }
+                    String value = textField.getText();
+                    if (number2.intValue() <= 14) {
+                        value = value.replaceAll("[^0-9]", "");
+                        value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
+                        value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
+                        value = value.replaceFirst("(\\d{3})(\\d)", "$1-$2");
+                    } else {
+                        value = value.replaceAll("[^0-9]", "");
+                        value = value.replaceFirst("(\\d{2})(\\d)", "$1.$2");
+                        value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
+                        value = value.replaceFirst("(\\d{3})(\\d)", "$1/$2");
+                        value = value.replaceFirst("(\\d{4})(\\d)", "$1-$2");
+                    }
 
-            String finalValue = value;
-            Platform.runLater(() -> {
-                textField.setText(finalValue);
-            });
-            MaskFieldUtil.positionCaret(textField);
-        }
+                    String finalValue = value;
+                    Platform.runLater(() -> {
+                        textField.setText(finalValue);
+                    });
+                    MaskFieldUtil.positionCaret(textField);
+                }
         );
     }
 
     public static void cepField(TextField textField) {
         MaskFieldUtil.maxField(textField, 9);
         textField.lengthProperty().addListener((observableValue, number, number2) -> {
-            String value = textField.getText();
-            value = value.replaceAll("[^0-9]", "");
-            value = value.replaceFirst("(\\d{5})(\\d)", "$1-$2");
+                    String value = textField.getText();
+                    value = value.replaceAll("[^0-9]", "");
+                    value = value.replaceFirst("(\\d{5})(\\d)", "$1-$2");
 
-            String finalValue = value;
-            Platform.runLater(() -> {
-                textField.setText(finalValue);
-            });
+                    String finalValue = value;
+                    Platform.runLater(() -> {
+                        textField.setText(finalValue);
+                    });
 
-            MaskFieldUtil.positionCaret(textField);
-        }
+                    MaskFieldUtil.positionCaret(textField);
+                }
         );
     }
 
     public static void foneField(TextField textField) {
         MaskFieldUtil.maxField(textField, 15);
         textField.lengthProperty().addListener((observableValue, number, number2) -> {
-            try {
-                String value = textField.getText();
-                value = value.replaceAll("[^0-9]", "");
-                int tam = value.length();
-                value = value.replaceFirst("(\\d{2})(\\d)", "($1) $2");
-                value = value.replaceFirst("(\\d{4})(\\d)", "$1-$2");
-                if (tam > 10) {
-                    value = value.replaceAll("-", "");
-                    value = value.replaceFirst("(\\d{5})(\\d)", "$1-$2");
+                    try {
+                        String value = textField.getText();
+                        value = value.replaceAll("[^0-9]", "");
+                        int tam = value.length();
+                        value = value.replaceFirst("(\\d{2})(\\d)", "($1) $2");
+                        value = value.replaceFirst("(\\d{4})(\\d)", "$1-$2");
+                        if (tam > 10) {
+                            value = value.replaceAll("-", "");
+                            value = value.replaceFirst("(\\d{5})(\\d)", "$1-$2");
+                        }
+                        String finalValue = value;
+                        Platform.runLater(() -> {
+                            textField.setText(finalValue);
+                        });
+
+                        MaskFieldUtil.positionCaret(textField);
+
+                    } catch (Exception ex) {
+                    }
                 }
-                String finalValue = value;
-                Platform.runLater(() -> {
-                    textField.setText(finalValue);
-                });
-
-                MaskFieldUtil.positionCaret(textField);
-
-            } catch (Exception ex) {
-            }
-        }
         );
     }
 
     public static void cpfField(TextField textField) {
         MaskFieldUtil.maxField(textField, 14);
         textField.lengthProperty().addListener((observableValue, number, number2) -> {
-            String value = textField.getText();
-            value = value.replaceAll("[^0-9]", "");
-            value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
-            value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
-            value = value.replaceFirst("(\\d{3})(\\d)", "$1-$2");
+                    String value = textField.getText();
+                    value = value.replaceAll("[^0-9]", "");
+                    value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
+                    value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
+                    value = value.replaceFirst("(\\d{3})(\\d)", "$1-$2");
 
-            String finalValue = value;
-            Platform.runLater(() -> {
-                textField.setText(finalValue);
-            });
+                    String finalValue = value;
+                    Platform.runLater(() -> {
+                        textField.setText(finalValue);
+                    });
 
-            MaskFieldUtil.positionCaret(textField);
-        }
+                    MaskFieldUtil.positionCaret(textField);
+                }
         );
     }
 
     public static void cnpjField(TextField textField) {
         MaskFieldUtil.maxField(textField, 18);
         textField.lengthProperty().addListener((observableValue, number, number2) -> {
-            String value = textField.getText();
-            value = value.replaceAll("[^0-9]", "");
-            value = value.replaceFirst("(\\d{2})(\\d)", "$1.$2");
-            value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
-            value = value.replaceFirst("(\\d{3})(\\d)", "$1/$2");
-            value = value.replaceFirst("(\\d{4})(\\d)", "$1-$2");
+                    String value = textField.getText();
+                    value = value.replaceAll("[^0-9]", "");
+                    value = value.replaceFirst("(\\d{2})(\\d)", "$1.$2");
+                    value = value.replaceFirst("(\\d{3})(\\d)", "$1.$2");
+                    value = value.replaceFirst("(\\d{3})(\\d)", "$1/$2");
+                    value = value.replaceFirst("(\\d{4})(\\d)", "$1-$2");
 
-            String finalValue = value;
-            Platform.runLater(() -> {
-                textField.setText(finalValue);
-            });
+                    String finalValue = value;
+                    Platform.runLater(() -> {
+                        textField.setText(finalValue);
+                    });
 
-            MaskFieldUtil.positionCaret(textField);
-        }
+                    MaskFieldUtil.positionCaret(textField);
+                }
         );
     }
 
     private static void positionCaret(TextField textField) {
         Platform.runLater(() -> {
-            if (textField.getText().length() != 0) {
-                textField.positionCaret(textField.getText().length());
-            }
-        }
+                    if (textField.getText().length() != 0) {
+                        textField.positionCaret(textField.getText().length());
+                    }
+                }
         );
     }
 
     public static void maxField(TextField textField, Integer length) {
         textField.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            if (newValue == null || newValue.length() > length) {
-                Platform.runLater(() -> {
-                    textField.setText(oldValue);
-                });
-            }
-        }
+                    if (newValue == null || newValue.length() > length) {
+                        Platform.runLater(() -> {
+                            textField.setText(oldValue);
+                        });
+                    }
+                }
         );
     }
 

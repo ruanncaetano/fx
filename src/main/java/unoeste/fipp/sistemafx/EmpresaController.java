@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import org.json.JSONObject;
 import unoeste.fipp.sistemafx.db.dal.EmpresaDAL;
 import unoeste.fipp.sistemafx.db.entidade.Empresa;
 import unoeste.fipp.sistemafx.util.MaskFieldUtil;
@@ -57,22 +56,15 @@ public class EmpresaController implements Initializable {
     private TextField tfIe;
 
     @FXML
+    private TextField tfNumeroDaRua;
+
+    @FXML
     private TextField tfRazao;
 
     @FXML
     private TextField tfTelefone;
-
     @FXML
     private TextField tfVlrEmbala;
-
-    @FXML
-    private TextField tfNumeroDaRua;
-
-    @FXML
-    private TextField tfRua;
-
-    @FXML
-    private TextField tfUf;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -101,9 +93,9 @@ public class EmpresaController implements Initializable {
         empresa.setEmail(tfEmail.getText());
         empresa.setNomeFantasia(tfFantasia.getText());
         empresa.setNumeroDaRua(tfNumeroDaRua.getText());
-        empresa.setRua(tfRua.getText());
+        empresa.setRua(tfTelefone.getText());
         empresa.setTelefone(tfTelefone.getText());
-        empresa.setUf(tfUf.getText());
+        empresa.setUf(tfEstado.getText());
         empresa.setValorDaEmbalagem(Double.parseDouble(tfVlrEmbala.getText()));
 
         if (empresaJaExiste)
@@ -111,7 +103,7 @@ public class EmpresaController implements Initializable {
         else
             empresaDAL.gravar(empresa);
 
-        tfRua.getScene().getWindow().hide();
+        tfEndereco.getScene().getWindow().hide();
 
     }
     @FXML
@@ -122,12 +114,15 @@ public class EmpresaController implements Initializable {
     @FXML
     void onConfirmar(ActionEvent event) {
         String mensagem="Confirma o cadastro da empresa "+tfRazao.getText();
+        System.out.println(tfVlrEmbala.getText());
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText(mensagem);
         if(alert.showAndWait().get()== ButtonType.OK)
         {
 
-            Empresa emp=new Empresa(tfRazao.getText(),tfFantasia.getText(),tfCnpj.getText(),tfCep.getText(),tfRua.getText(),tfNumeroDaRua.getText(),tfBairro.getText(),tfCidade.getText(),tfUf.getText(),tfTelefone.getText(),tfEmail.getText(),Double.parseDouble(tfVlrEmbala.getText()));
+            Empresa emp=new Empresa(tfRazao.getText(),tfFantasia.getText(),tfCnpj.getText(),
+                    tfCep.getText(),tfEndereco.getText(),tfNumeroDaRua.getText(),tfBairro.getText(),tfCidade.getText(),
+                    tfEstado.getText(),tfTelefone.getText(),tfEmail.getText(),Double.parseDouble(tfVlrEmbala.getText()));
             EmpresaDAL empD=new EmpresaDAL();
             empD.gravar(emp);
         }

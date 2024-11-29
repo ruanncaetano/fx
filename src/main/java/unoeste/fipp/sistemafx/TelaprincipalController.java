@@ -25,7 +25,7 @@ public class TelaprincipalController {
         FXMLLoader fxmlLoader = new FXMLLoader(SistemaFX.class.getResource("empresa-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage=new Stage();
-        stage.setTitle("Informações da empresa");
+        stage.setTitle("Informações das empresas");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
 //        stage.setY(stage.getY()+25);
