@@ -81,13 +81,13 @@ public class FormPedidosController implements Initializable {
     @FXML
     void onAdicionar(ActionEvent event) {
         if(produto!=null){
-            Pedido.Item item=new Pedido.Item(produto,spQuantidade.getValue(), produto.getValor()*spQuantidade.getValue());
+            Pedido.Item item=new Pedido.Item(produto,spQuantidade.getValue(), produto.getValor());
             tableView.getItems().add(item);
             btProduto.setText("Selecione um produto");
             spQuantidade.getValueFactory().setValue(1);
             produto=null;
         }
-
+        atualizarTotal();
     }
 
     @FXML
@@ -102,7 +102,16 @@ public class FormPedidosController implements Initializable {
         pedido.setData(dpData.getValue());
         pedido.setNomeCliente(tfCliente.getText());
         pedido.setFoneCliente(tfTelefone.getText());
-        pedido.setTotal(Double.parseDouble(lbTotal.getText()));
+        double valorTotalPedido = 0.0;
+
+        for (Pedido.Item item : tableView.getItems()) {
+            Produto produto = item.produto();
+            int quantidade = item.quant();
+            double valorItem = item.valor();
+
+            valorTotalPedido += valorItem * quantidade;
+        }
+        pedido.setTotal(valorTotalPedido);
         pedido.setTipoPagamento(cbTipoPagamento.getValue());
         pedido.setViagem(rbViagem.isSelected()?'S':'N');
         for (int i=0;i<tableView.getItems().size();i++)
@@ -128,7 +137,6 @@ public class FormPedidosController implements Initializable {
         produto=(Produto)mt.getSelecionado();
         if(produto!=null)
             btProduto.setText(produto.getNome());
-
     }
 
     @Override
@@ -143,7 +151,20 @@ public class FormPedidosController implements Initializable {
         Platform.runLater(()->{tfCliente.requestFocus();});
 
     }
+    private void atualizarTotal() {
 
+        double valorTotalPedido = 0.0;
+
+        for (Pedido.Item item : tableView.getItems()) {
+            Produto produto = item.produto();
+            int quantidade = item.quant();
+            double valorItem = item.valor();
+
+            valorTotalPedido += valorItem * quantidade;
+        }
+
+        lbTotal.setText(String.format("%.2f", valorTotalPedido));
+    }
     private void carregarTiposPagamento() {
         //carrega os tipos de pagamento
         List<TipoPagamento> tipoPagamentoList=new TipoPagamentoDAL().get("");
@@ -172,8 +193,7 @@ public class FormPedidosController implements Initializable {
                             "Telefone: " + tfTelefone.getText() + "\n" +
                             "Data: " + dpData.getValue().toString() + "\n" +
                             "Tipo de Pagamento: " + (cbTipoPagamento.getValue() != null ? cbTipoPagamento.getValue().getNome() : "N/A") + "\n" +
-                            "Viagem: " + (rbViagem.isSelected() ? "Sim" : "Não") + "\n" +
-                            "Total: R$ " + lbTotal.getText() + "\n\n",
+                            "Viagem: " + (rbViagem.isSelected() ? "Sim" : "Não") + "\n",
                     normal
             );
             document.add(infoPedido);
@@ -201,13 +221,22 @@ public class FormPedidosController implements Initializable {
             table.addCell(cell);
 
             table.endHeaders();
-
+            double total=0;
             // adicionando os itens a tabela
             for (Pedido.Item item : tableView.getItems()) {
                 table.addCell(new Cell(new Phrase(item.produto().getNome(), normal)));
                 table.addCell(new Cell(new Phrase(String.valueOf(item.quant()), normal)));
-                table.addCell(new Cell(new Phrase(String.format("R$ %.2f", item.valor() * item.quant()), normal)));
+                double valor = item.valor();
+                total += valor;
+                table.addCell(new Cell(new Phrase(String.format("R$ %.2f", item.valor()), normal)));
+
             }
+            Cell totalCell = new Cell(new Phrase("TOTAL", normal));
+            totalCell.setColspan(2);  // Ocupa duas colunas (Produto e Quantidade)
+            totalCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            table.addCell(totalCell);
+
+            table.addCell(new Cell(new Phrase(String.format("R$ %.2f", total), normal)));
 
             document.add(table);
 

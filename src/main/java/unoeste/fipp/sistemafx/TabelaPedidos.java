@@ -62,9 +62,6 @@ public class TabelaPedidos implements Initializable {
     private void carregarTabela() {
         PedidoDAL pDal= new PedidoDAL();
         List<Pedido> ListaPedi = pDal.get("");
-        for(Pedido p: ListaPedi) {
-            p.setViagem(Character.toUpperCase(p.getViagem()));
-        }
         tbPedidos.setItems(FXCollections.observableArrayList(ListaPedi));
     }
 

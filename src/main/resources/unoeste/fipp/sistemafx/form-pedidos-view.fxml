@@ -117,12 +117,7 @@
       </TableView>
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Label alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="77.0" text="R$ ">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbTotal" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="77.0" text="0.00">
+            <Label fx:id="lbTotal" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="172.0" text="0.00">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

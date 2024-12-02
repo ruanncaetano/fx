@@ -94,4 +94,11 @@ public class TelaprincipalController {
 
         stage.showAndWait();
     }
+    @FXML
+    void onSobre(ActionEvent event) {
+        String mensagem="Integrantes\nGuilherme Silva Horta RA: 262319144\n" +
+                "Pedro Henrique Turbuk Souza - RA: 262318520\n Ruan Costa Caetano da Silva - RA: 262319080";
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(mensagem);
+    }
 }

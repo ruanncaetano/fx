@@ -23,7 +23,6 @@
                   <items>
                     <MenuItem onAction="#onCadProduto" style="-fx-background-radius: 10;" text="_PRODUTO..." />
                         <MenuItem onAction="#onCadCategoria" text="_CATEGORIA..." />
-                        <MenuItem text="_TIPO DE PAGAMENTO" />
                         <MenuItem onAction="#onCadEmpresa" text="_EMPRESA" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onFechar" text="FECHAR">
@@ -45,18 +44,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-background-radius: 10px; -fx-font-size: 14;" text="_RELATORIO">
                   <items>
-                        <Menu text="_FINANCEIRO">
-                          <items>
-                            <MenuItem text="_PEDIDOS POR PERÍODO" />
-                          </items>
-                        </Menu>
                         <MenuItem mnemonicParsing="false" onAction="#onTabelaEmpresas" text="EMPRESAS" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" style="-fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 10px;" text="_AJUDA">
                      <items>
-                        <MenuItem text="_AJUDA DO SISTEMA" />
-                        <MenuItem text="_SOBRE" />
+                        <MenuItem onAction="#onSobre" text="_SOBRE" />
                      </items>
                   </Menu>
               </menus>

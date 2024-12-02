@@ -114,7 +114,6 @@ public class EmpresaController implements Initializable {
     @FXML
     void onConfirmar(ActionEvent event) {
         String mensagem="Confirma o cadastro da empresa "+tfRazao.getText();
-        System.out.println(tfVlrEmbala.getText());
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText(mensagem);
         if(alert.showAndWait().get()== ButtonType.OK)

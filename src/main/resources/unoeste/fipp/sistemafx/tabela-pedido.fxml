@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox prefHeight="636.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="unoeste.fipp.sistemafx.TabelaPedidos">
    <children>
       <HBox prefHeight="57.0" prefWidth="742.0">
@@ -36,10 +35,10 @@
       <TableView fx:id="tbPedidos" prefHeight="446.0" prefWidth="722.0">
         <columns>
           <TableColumn fx:id="tbId" prefWidth="28.80001962184906" text="ID" />
-          <TableColumn fx:id="tbData" prefWidth="67.19997596740723" text="Data" />
-            <TableColumn fx:id="tbCli" prefWidth="200.00000762939453" text="Cliente" />
-            <TableColumn fx:id="tbFone" prefWidth="136.8000030517578" text="Telefone" />
-            <TableColumn fx:id="tbTotal" prefWidth="122.39999389648438" text="Total" />
+          <TableColumn fx:id="tbData" prefWidth="102.39999580383301" text="Data" />
+            <TableColumn fx:id="tbCli" prefWidth="184.00001525878906" text="Cliente" />
+            <TableColumn fx:id="tbFone" prefWidth="150.39996337890625" text="Telefone" />
+            <TableColumn fx:id="tbTotal" prefWidth="93.59994506835938" text="Total" />
             <TableColumn fx:id="tbPagamento" prefWidth="102.4000244140625" text="Pagamento" />
             <TableColumn fx:id="tbViage" prefWidth="66.4000244140625" text="Viagem" />
         </columns>
